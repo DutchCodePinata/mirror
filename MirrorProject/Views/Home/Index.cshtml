@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    String[] maanden = new []{"Januari", "Februari", "Maart","April","Mei","Juni","Juli","Augustus","September","Oktober","November","December"};
+    String[] weekdagen = new []{"Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"};
+    DateTime date = DateTime.Now;    
+}
+
+
+<table class="top right">
+    <tr>
+        <td class="time medium" style="font-size:150px;" colspan="3">@date.ToString("HH:MM")</td>
+    </tr>
+    <tr>
+        <td class="date medium" colspan="3">@weekdagen[(int)date.DayOfWeek] @date.Day @maanden[(date.Month - 1)]</td>
+    </tr>
+    <tr>
+        <td id="temp-now-icon" class="weather-now-icon wi wi-rain xdimmed"></td>
+        <td class="temp-now medium" colspan="2" style="font-size:90px;">7.7&deg;</td>
+    </tr>
+    <tr>
+        <td class="wi wi-wind towards-n dimmed"></td>
+        <td class="windspeed-now small" colspan="2">2.6km/h</td>
+    </tr>
+    <tr>
+        <td class="small dimmed">high/low</td>
+        <td class="temp-high small">8&deg;</td>
+        <td class="temp-low small">4&deg;</td>
+    </tr>
+</table>
+
