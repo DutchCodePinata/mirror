@@ -29,23 +29,24 @@
 
             function successFunc(data, status) {
                 var weatherReport = JSON.parse(data);
-                $(".temp-now").html(weatherReport.Temp + "&deg;");
-                $(".winddir-now").html(weatherReport.WindDir);
-                $("#temp-now-icon").attr("class", "wi " + weatherReport.ForecastIcon + " xdimmed");
-                $(".windspeed-now").html(weatherReport.WindSpeed + "km/h");
+                if (weatherReport.Forecasts != null) {
+                    $(".temp-now").html(weatherReport.Temp + "&deg;");
+                    $(".winddir-now").html(weatherReport.WindDir);
+                    $("#temp-now-icon").attr("class", "wi " + weatherReport.ForecastIcon + " xdimmed");
+                    $(".windspeed-now").html(weatherReport.WindSpeed + "km/h");
 
-                $(".today-temp-high").html(weatherReport.Forecasts[0].TempHigh+ "&deg;");
-                $(".today-temp-low").html(weatherReport.Forecasts[0].TempLow + "&deg;");
-                $(".today-rain-chance").html(weatherReport.Forecasts[0].RainChance + "&#37;");
+                    $(".today-temp-high").html(weatherReport.Forecasts[0].TempHigh + "&deg;");
+                    $(".today-temp-low").html(weatherReport.Forecasts[0].TempLow + "&deg;");
+                    $(".today-rain-chance").html(weatherReport.Forecasts[0].RainChance + "&#37;");
 
-                $(".tommorow-temp-high").html(weatherReport.Forecasts[1].TempHigh + "&deg;");
-                $(".tommorow-temp-low").html(weatherReport.Forecasts[1].TempLow + "&deg;");
-                $(".tommorow-rain-chance").html(weatherReport.Forecasts[1].RainChance + "&#37;");
+                    $(".tommorow-temp-high").html(weatherReport.Forecasts[1].TempHigh + "&deg;");
+                    $(".tommorow-temp-low").html(weatherReport.Forecasts[1].TempLow + "&deg;");
+                    $(".tommorow-rain-chance").html(weatherReport.Forecasts[1].RainChance + "&#37;");
 
-                $(".dayaftertommorow-temp-high").html(weatherReport.Forecasts[2].TempHigh + "&deg;");
-                $(".dayaftertommorow-temp-low").html(weatherReport.Forecasts[2].TempLow + "&deg;");
-                $(".dayaftertommorow-rain-chance").html(weatherReport.Forecasts[2].RainChance + "&#37;");
-
+                    $(".dayaftertommorow-temp-high").html(weatherReport.Forecasts[2].TempHigh + "&deg;");
+                    $(".dayaftertommorow-temp-low").html(weatherReport.Forecasts[2].TempLow + "&deg;");
+                    $(".dayaftertommorow-rain-chance").html(weatherReport.Forecasts[2].RainChance + "&#37;");
+                }
             }
 
             function errorFunc(data) {
