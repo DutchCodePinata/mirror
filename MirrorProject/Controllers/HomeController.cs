@@ -24,5 +24,10 @@ namespace MirrorProject.Controllers
             return Json(JsonConvert.SerializeObject(ServiceSingleton.GetInstance().GetWeatherReport()),JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult RssUpdate()
+        {
+            return Json(JsonConvert.SerializeObject(RssSingleton.GetInstance().GetRssItems()), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

@@ -9,6 +9,7 @@ namespace MirrorProject.Models
         public ServiceScheduler()
         {
             Services.WundergroundQuery();
+            Services.RssQuery();
 
             try
             {
@@ -20,6 +21,7 @@ namespace MirrorProject.Models
                 ElapsedEventHandler handler = new ElapsedEventHandler(delegate(object o, ElapsedEventArgs e)
                 {
                     Services.WundergroundQuery();
+                    Services.RssQuery();
                 });
                 tmrTimersTimer.Elapsed += handler;
                 tmrTimersTimer.Start();

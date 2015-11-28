@@ -24,6 +24,7 @@
     <NuGetPackageImportStamp>9a3ecfc6</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,6 +61,10 @@
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QDFeedParser, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\qdfeed.1.1.0\lib\net45\QDFeedParser.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -150,6 +155,7 @@
     </Compile>
     <Compile Include="Models\ServiceScheduler.cs" />
     <Compile Include="Models\Services.cs" />
+    <Compile Include="Models\RssSingleton.cs" />
     <Compile Include="Models\ServiceSingleton.cs" />
     <Compile Include="Models\WundergroundModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

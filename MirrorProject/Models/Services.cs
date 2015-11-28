@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using QDFeedParser;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -19,6 +20,21 @@ namespace MirrorProject.Models
                 var json = await client.GetStringAsync(query);
 
                 ServiceSingleton.GetInstance().SetWunderground(JsonConvert.DeserializeObject<WundergroundData>(json));
+            }
+        }
+
+        public static void RssQuery()
+        {
+            using (var client = new HttpClient(new HttpClientHandler(), true))
+            {
+                // Make configuration property
+                string feedString = "http://www.nos.nl/export/nosnieuws-rss.xml";
+
+                Uri feeduri = new Uri(feedString);
+                IFeedFactory factory = new HttpFeedFactory();
+                IFeed feed = factory.CreateFeed(feeduri);
+
+                RssSingleton.GetInstance().SetRssItems(feed.Items);
             }
         }
     }
