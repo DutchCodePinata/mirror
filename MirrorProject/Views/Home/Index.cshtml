@@ -1,30 +1,51 @@
 ﻿@{
     ViewBag.Title = "Index";
-    String[] maanden = new []{"Januari", "Februari", "Maart","April","Mei","Juni","Juli","Augustus","September","Oktober","November","December"};
-    String[] weekdagen = new []{"Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"};
+    var maanden = new []{"Januari", "Februari", "Maart","April","Mei","Juni","Juli","Augustus","September","Oktober","November","December"};
+    var weekdagen = new []{"Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"};
     DateTime date = DateTime.Now;    
 }
 
-
-<table class="top left">
-    <tr>
-        <td class="time medium" style="font-size:150px;" colspan="3">@date.ToString("HH:MM")</td>
-    </tr>
-    <tr>
-        <td class="date medium" colspan="3">@weekdagen[(int)date.DayOfWeek] @date.Day @maanden[(date.Month - 1)]</td>
-    </tr>
-    <tr>
-        <td id="temp-now-icon" class="weather-now-icon wi wi-rain xdimmed"></td>
-        <td class="temp-now medium" colspan="2" style="font-size:90px;">7.7&deg;</td>
-    </tr>
-    <tr>
-        <td class="wi wi-wind towards-n dimmed"></td>
-        <td class="windspeed-now small" colspan="2">2.6km/h</td>
-    </tr>
-    <tr>
-        <td class="small dimmed">high/low</td>
-        <td class="temp-high small">8&deg;</td>
-        <td class="temp-low small">4&deg;</td>
-    </tr>
-</table>
-
+<div class="col-sm-4">
+    
+    <div class="col-sm-12 time medium" style="font-size:150px;">@date.ToString("HH:MM")</div>
+    <div class="col-sm-12 date medium">@weekdagen[(int)date.DayOfWeek] @date.Day @maanden[(date.Month - 1)]</div>
+    
+    <div class="col-sm-12">
+        <div class="col-sm-5 temp-now medium" style="font-size:90px">7.7&deg;</div>
+        <div class="col-sm-3"><i class="weather-now-icon wi wi-rain xdimmed" id="temp-now-icon"></i></div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-5"><span class="windspeed-now small" style="vertical-align: middle">2.6km/h</span></div>
+        <div class="col-sm-3"><i class="wi wi-wind towards-n dimmed"></i></div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-2 small"></div>
+        <div class="col-sm-2 small">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10"><i class="wi wi-rain"></i></div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="col-sm-2 small"></div>
+        <div class="col-sm-6 small"></div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-2 small"><span class="today-temp-high">8&deg;</span></div>
+        <div class="col-sm-2 small"><span class="today-rain-chance dimmed">80%</span></div>
+        <div class="col-sm-2 small"><span class="today-temp-low">4&deg;</span></div>
+        <div class="col-sm-6 small dimmed">Today</div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-2 small"><span class="tommorow-temp-high">12&deg;</span></div>
+        <div class="col-sm-2 small"><span class="tommorow-rain-chance dimmed">10%</span></div>
+        <div class="col-sm-2 small"><span class="tommorow-temp-low">3&deg;</span></div>
+        <div class="col-sm-6 small dimmed">Tommorow</div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-2 small"><span class="dayaftertommorow-temp-high">12&deg;</span></div>
+        <div class="col-sm-2 small"><span class="dayaftertommorow-rain-chance dimmed">40%</span></div>
+        <div class="col-sm-2 small"><span class="dayaftertommorow-temp-low">4&deg;</span></div>
+        <div class="col-sm-6 small dimmed">Day after tommorow</div>
+    </div>
+</div>

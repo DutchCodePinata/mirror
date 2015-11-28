@@ -9,10 +9,13 @@ namespace MirrorProject.Models
         public ServiceScheduler()
         {
             Services.WundergroundQuery();
+
             try
             {
                 Timer tmrTimersTimer = new Timer();
-                tmrTimersTimer.Interval = 180 * 1000; // 24 hours
+                int second = 1000;
+                int minute = second*60;
+                tmrTimersTimer.Interval = 10 * minute; // 
                 // Anonymous delegate
                 ElapsedEventHandler handler = new ElapsedEventHandler(delegate(object o, ElapsedEventArgs e)
                 {
