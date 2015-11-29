@@ -227,3 +227,8 @@ textarea {
     display: inline-block;
     padding-top: 50px;
 }
+
+.rss-content 
+{
+    display: none;
+}

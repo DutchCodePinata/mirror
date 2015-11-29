@@ -28,19 +28,21 @@ namespace MirrorProject.Models
         public void SetRssItems(IEnumerable<RssItem> items)
         {
             rssItems.Clear();
-            items.ForEach(x => rssItems.Add(new RssFeedItem(x.Title, x.PublicationUtcTime.ToLocalTime().ToString("HH:mm"))));
+            items.ForEach(x => rssItems.Add(new RssFeedItem(x.Title, x.PublicationUtcTime.ToLocalTime().ToString("HH:mm"), x.Description)));
         }
 
         public class RssFeedItem
         {
-            public RssFeedItem(string title, string publicationTime)
+            public RssFeedItem(string title, string publicationTime, string content)
             {
                 this.title = title;
                 this.publicationTime = publicationTime;
+                this.content = content;
             }
 
             public string title { get; set; }
             public string publicationTime { get; set; }
+            public string content { get; set; }
         }
     }
 }
