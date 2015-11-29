@@ -17,7 +17,17 @@
             @RenderBody()
         </div>
         <script type="text/javascript">
+
+            // Run first time
+            makeAjaxCalls();
+
+            // Schedule updates
             setInterval(function () {
+                makeAjaxCalls();
+            }, 1000 * 60);
+
+            // Make one call for all services
+            function makeAjaxCalls() {
                 $.ajax({
                     url: 'Home/WeatherUpdate',
                     contentType: "application/json; charset=utf-8",
@@ -25,18 +35,17 @@
                     success: successFunc,
                     error: errorFunc
                 });
-            }, 1000 * 60);
 
-            setInterval(function () {
                 $.ajax({
                     url: 'Home/RssUpdate',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: successFunc,
+                    success: newsUpdate,
                     error: errorFunc
                 });
-            }, 1000 * 60);
+            }
 
+            // Update weather html
             function successFunc(data, status) {
                 var weatherReport = JSON.parse(data);
                 if (weatherReport.Forecasts != null) {
@@ -59,12 +68,19 @@
                 }
             }
 
+            // Update news html
             function newsUpdate(data, status) {
                 var rssItems = JSON.parse(data);
                 if (rssItems != null) {
-                    var rssItem = rssItems[0];
-                    $(".rss-publication-time").html(rssItem.publicationTime);
-                    $(".rss-title").html(rssItem.title);
+                    var childs = $(".rss-feed").children();
+                    for (var i = 0; i < childs.length; i++) {
+                        var rssItem = rssItems[i];
+                        var child = childs[i];
+
+                        $(child).find(".rss-publication-time").html(rssItem.publicationTime);
+                        $(child).find(".rss-title").html(rssItem.title);
+                    }                    
+                }
             }
 
             function errorFunc(data) {

@@ -216,3 +216,9 @@ textarea {
 {
 	color: #aaa;
 }
+
+.rss-feed
+{
+    display: inline-block;
+    padding-top: 50px;
+}

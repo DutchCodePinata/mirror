@@ -19,6 +19,9 @@ time.updateTime = function () {
     $(this.dateLocation).html(weekday[_now.getDay()] + " " + _now.getDate() + " " + month[_now.getMonth()]);
     $(this.timeLocation).html(new Date().toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1"));
 
+    //Update weekdays
+    $("tomorrow-weekday").html(weekday[_now.getDay() + 1 % 7]);
+    $("dayaftertomorrow-weekday").html(weekday[_now.getDay() + 2 % 7]);
 }
 
 time.init = function () {

@@ -16,6 +16,7 @@ namespace MirrorProject.Controllers
         public ActionResult Index()
         {
             ServiceSingleton.GetInstance();
+            RssSingleton.GetInstance();
             return View();
         }
 

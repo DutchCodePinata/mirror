@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Web;
 using Microsoft.Ajax.Utilities;
-using QDFeedParser;
+using TNX.RssReader;
 
 namespace MirrorProject.Models
 {
@@ -13,27 +13,27 @@ namespace MirrorProject.Models
 
         private ServiceScheduler scheduler = new ServiceScheduler();
 
-        private List<RssItem> rssItems = new List<RssItem>();
+        private List<RssFeedItem> rssItems = new List<RssFeedItem>();
 
         public static RssSingleton GetInstance()
         {
             return instance;
         }
 
-        public List<RssItem> GetRssItems()
+        public List<RssFeedItem> GetRssItems()
         {
             return rssItems;
         }
 
-        public void SetRssItems(List<BaseFeedItem> items)
+        public void SetRssItems(IEnumerable<RssItem> items)
         {
-            items.Clear();
-            items.ForEach(x => rssItems.Add(new RssItem(x.Title, x.DatePublished.ToString("HH:mm"))));
+            rssItems.Clear();
+            items.ForEach(x => rssItems.Add(new RssFeedItem(x.Title, x.PublicationUtcTime.ToLocalTime().ToString("HH:mm"))));
         }
 
-        public class RssItem
+        public class RssFeedItem
         {
-            public RssItem(string title, string publicationTime)
+            public RssFeedItem(string title, string publicationTime)
             {
                 this.title = title;
                 this.publicationTime = publicationTime;
