@@ -217,6 +217,11 @@ textarea {
 	color: #aaa;
 }
 
+.rss-text 
+{
+    display: flex;
+}
+
 .rss-feed
 {
     display: inline-block;
