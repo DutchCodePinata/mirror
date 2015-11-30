@@ -89,16 +89,22 @@
                 
             }
 
-            (function(){$("#accordion").accordion({ header: ".slide" });})
-
-            setInterval((function () {
-                var count = 0;
-                var list = $('.slides .slide');
             
-                return function () {
-                    list.eq(++count % list.length).click();
-                };
-            })(), 2000);
+            $(document).ready(function () {
+
+                $("#accordion").accordion({ header: ".slide", heightStyle: "content" });
+                setInterval((function () {
+                    var count = 0;
+                    var list = $('.slides .slide');
+
+                    return function () {
+                        list.eq(++count % list.length).click();
+                    };
+                })(), 10000);
+            });
+
+
+            
         </script>
         
         @Scripts.Render("~/bundles/bootstrap")

@@ -15,6 +15,8 @@ namespace MirrorProject.Models
 
         private List<RssFeedItem> rssItems = new List<RssFeedItem>();
 
+        private RssSingleton() { }
+
         public static RssSingleton GetInstance()
         {
             return instance;

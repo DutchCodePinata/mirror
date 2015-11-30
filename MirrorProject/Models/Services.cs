@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.ServiceModel.Syndication;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 using TNX.RssReader;
 
 namespace MirrorProject.Models
@@ -26,7 +29,7 @@ namespace MirrorProject.Models
         public static async Task RssQuery()
         {
             // Make configuration property
-            string[] feeds = { "http://www.rtlnieuws.nl/service/rss/nieuws/index.xml", "http://tweakers.net/feeds/nieuws.xml" };
+            string[] feeds = { "http://www.rtlnieuws.nl/service/rss/nieuws/index.xml"};
             int numberOfItems = 5;
 
             //Retrieve every item in every feed
