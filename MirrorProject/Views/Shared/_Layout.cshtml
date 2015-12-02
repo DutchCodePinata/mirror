@@ -3,111 +3,19 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" type="text/css" href="../../Content/font/weather-icons.css">
-        <link rel="stylesheet" type="text/css" href="../../Content/font/weather-icons-wind.css">
-        
-        <script src="../../Scripts/time.js" type="text/javascript"></script>
-        <title>@ViewBag.Title</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jquery")
-        <script src="../../Scripts/jquery-ui-1.11.4.js" type="text/javascript"></script>
+        <title>@ViewBag.Title</title>       
     </head>
     <body>
         <div>
             @RenderBody()
         </div>
-        <script type="text/javascript">
-
-            // Run first time
-            makeAjaxCalls();
-
-            // Schedule updates
-            setInterval(function () {
-                makeAjaxCalls();
-            }, 1000 * 60);
-
-            // Make one call for all services
-            function makeAjaxCalls() {
-                $.ajax({
-                    url: 'Home/WeatherUpdate',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: weatherUpdate,
-                    error: errorFunc
-                });
-
-                $.ajax({
-                    url: 'Home/RssUpdate',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: newsUpdate,
-                    error: errorFunc
-                });
-            }
-
-            // Update weather html
-            function weatherUpdate(data, status) {
-                var weatherReport = JSON.parse(data);
-                if (weatherReport.Forecasts != null) {
-                    $(".temp-now").html(weatherReport.Temp + "&deg;");
-                    $(".winddir-now").html(weatherReport.WindDir);
-                    $("#temp-now-icon").attr("class", "wi " + weatherReport.ForecastIcon + " xdimmed");
-                    $(".windspeed-now").html(weatherReport.WindSpeed + "km/h");
-
-                    $(".today-temp-high").html(weatherReport.Forecasts[0].TempHigh + "&deg;");
-                    $(".today-temp-low").html(weatherReport.Forecasts[0].TempLow + "&deg;");
-                    $(".today-rain-chance").html(weatherReport.Forecasts[0].RainChance + "&#37;");
-
-                    $(".tommorow-temp-high").html(weatherReport.Forecasts[1].TempHigh + "&deg;");
-                    $(".tommorow-temp-low").html(weatherReport.Forecasts[1].TempLow + "&deg;");
-                    $(".tommorow-rain-chance").html(weatherReport.Forecasts[1].RainChance + "&#37;");
-
-                    $(".dayaftertommorow-temp-high").html(weatherReport.Forecasts[2].TempHigh + "&deg;");
-                    $(".dayaftertommorow-temp-low").html(weatherReport.Forecasts[2].TempLow + "&deg;");
-                    $(".dayaftertommorow-rain-chance").html(weatherReport.Forecasts[2].RainChance + "&#37;");
-                }
-            }
-
-            // Update news html
-            function newsUpdate(data, status) {
-                var rssItems = JSON.parse(data);
-                if (rssItems != null) {
-                    var childs = $(".rss-feed").children();
-                    for (var i = 0; i < childs.length; i++) {
-                        var rssItem = rssItems[i];
-                        var child = childs[i];
-
-                        $(child).find(".rss-publication-time").html(rssItem.publicationTime);
-                        $(child).find(".rss-title").html(rssItem.title);
-                        $(child).find(".rss-description").html(rssItem.content);
-                    }                    
-                }
-            }
-
-            function errorFunc(data) {
                 
-            }
-
-            
-            $(document).ready(function () {
-
-                $("#accordion").accordion({ header: ".slide", heightStyle: "content" });
-                setInterval((function () {
-                    var count = 0;
-                    var list = $('.slides .slide');
-
-                    return function () {
-                        list.eq(++count % list.length).click();
-                    };
-                })(), 10000);
-            });
-
-
-            
-        </script>
-        
         @Scripts.Render("~/bundles/bootstrap")
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jsmain")
         @RenderSection("scripts", required: false)
     </body>
 </html>

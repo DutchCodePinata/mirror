@@ -18,7 +18,7 @@ namespace MirrorProject.Models
             {
                 string apikey = "1859ccf0821879ad";
                 string pws = "IZUIDHOL158";
-                string query = string.Format("http://api.wunderground.com/api/{0}/conditions/forecast/q/pws:{1}.json", apikey, pws);
+                string query = string.Format("http://api.wunderground.com/api/{0}/conditions/forecast/hourly/q/pws:{1}.json", apikey, pws);
 
                 var json = await client.GetStringAsync(query);
 

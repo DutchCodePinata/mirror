@@ -9,7 +9,7 @@ namespace MirrorProject.Models
         public ServiceScheduler()
         {
             Services.WundergroundQuery();
-            Services.RssQuery();
+            //Services.RssQuery();
 
             try
             {

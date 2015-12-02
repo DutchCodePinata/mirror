@@ -39,17 +39,28 @@ namespace MirrorProject.Models
                 Temp = data.current_observation.temp_c,
                 WindDir = data.current_observation.wind_dir,
                 WindSpeed = data.current_observation.wind_kph,
-                ForecastIcon = weatherIcons.Where(x=>x.Wunderground.Equals(data.current_observation.icon)).Select(y=>y.Css).FirstOrDefault(),
-                Forecasts = new List<WeatherDayForecast>()             
+                Icon = weatherIcons.Where(x=>x.Wunderground.Equals(data.current_observation.icon)).Select(y=>y.Css).FirstOrDefault(),
+                Daily = new List<WeatherDayForecast>(),
+                Hourly = new List<WeatherHourForecast>()
             };
 
             for(int i = 0 ; i < 3; i++)
             {
-                weatherReport.Forecasts.Add(new WeatherDayForecast() { 
+                weatherReport.Daily.Add(new WeatherDayForecast() { 
                     RainChance = data.forecast.simpleforecast.forecastday[i].pop,
                     Date = data.forecast.simpleforecast.forecastday[i].date,
                     TempHigh = data.forecast.simpleforecast.forecastday[i].high.celsius,
                     TempLow = data.forecast.simpleforecast.forecastday[i].low.celsius
+                });
+            }
+
+            foreach(HourlyForecast hf in data.hourly_forecast)
+            {
+                weatherReport.Hourly.Add(new WeatherHourForecast()
+                {
+                    Hour = int.Parse(hf.FCTTIME.hour),
+                    RainFall = double.Parse(hf.qpf.metric),
+                    RainChance = int.Parse(hf.pop)
                 });
             }
         }
@@ -98,12 +109,9 @@ namespace MirrorProject.Models
             public double Temp;
             public string WindDir;
             public double WindSpeed;
-            public string ForecastIcon;
-            public string ForecastTxtToday;
-            public int ForecastChanceOfRain;
-            public string ForecastTempHigh;
-            public string ForecastTempLow;
-            public List<WeatherDayForecast> Forecasts;
+            public string Icon;
+            public List<WeatherDayForecast> Daily;
+            public List<WeatherHourForecast> Hourly;
         }
 
         public struct WeatherDayForecast
@@ -111,6 +119,13 @@ namespace MirrorProject.Models
             public Date Date;
             public string TempHigh;
             public string TempLow;
+            public int RainChance;
+        }
+
+        public struct WeatherHourForecast
+        {
+            public int Hour;
+            public double RainFall;
             public int RainChance;
         }
     }

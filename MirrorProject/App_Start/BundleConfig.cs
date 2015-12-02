@@ -29,7 +29,13 @@ namespace MirrorProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-cosmo.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/font/weather-icons.css",
+                      "~/Content/font/weather-icons-wind.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jsmain").Include(
+                        "~/Scripts/time.js",
+                        "~/Scripts/update.js"));
         }
     }
 }
