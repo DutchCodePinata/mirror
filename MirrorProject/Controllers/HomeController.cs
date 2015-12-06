@@ -20,7 +20,7 @@ namespace MirrorProject.Controllers
 
         public ActionResult WeatherUpdate()
         {
-            return Json(JsonConvert.SerializeObject(ServiceSingleton.GetInstance().GetWeatherReport()),JsonRequestBehavior.AllowGet);
+            return Json(JsonConvert.SerializeObject(Services.WundergroundQuery()),JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RssUpdate()

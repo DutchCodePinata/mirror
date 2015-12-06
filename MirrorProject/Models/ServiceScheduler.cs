@@ -15,7 +15,7 @@ namespace MirrorProject.Models
                 Timer tmrTimersTimer = new Timer();
                 int second = 1000;
                 int minute = second*60;
-                tmrTimersTimer.Interval = 0.5 * minute; // 
+                tmrTimersTimer.Interval = 10 * minute; // 
                 // Anonymous delegate
                 ElapsedEventHandler handler = new ElapsedEventHandler(delegate(object o, ElapsedEventArgs e)
                 {
