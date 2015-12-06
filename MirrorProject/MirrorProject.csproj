@@ -164,7 +164,7 @@
     </Compile>
     <Compile Include="Models\ServiceScheduler.cs" />
     <Compile Include="Models\Services.cs" />
-    <Compile Include="Models\RssSingleton.cs" />
+    <Compile Include="Models\RssResult.cs" />
     <Compile Include="Models\ServiceSingleton.cs" />
     <Compile Include="Models\WundergroundModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

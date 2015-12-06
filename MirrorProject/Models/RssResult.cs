@@ -7,20 +7,11 @@ using TNX.RssReader;
 
 namespace MirrorProject.Models
 {
-    public class RssSingleton
+    public class RssResult
     {
-        private static RssSingleton instance = new RssSingleton();
-
         private ServiceScheduler scheduler = new ServiceScheduler();
 
         private List<RssFeedItem> rssItems = new List<RssFeedItem>();
-
-        private RssSingleton() { }
-
-        public static RssSingleton GetInstance()
-        {
-            return instance;
-        }
 
         public List<RssFeedItem> GetRssItems()
         {
@@ -29,7 +20,6 @@ namespace MirrorProject.Models
 
         public void SetRssItems(IEnumerable<RssItem> items)
         {
-            rssItems.Clear();
             items.ForEach(x => rssItems.Add(new RssFeedItem(x.Title, x.PublicationUtcTime.ToLocalTime().ToString("HH:mm"), x.Description)));
         }
 
