@@ -3,15 +3,17 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <title>@ViewBag.Title</title>       
+        <title>@ViewBag.Title</title>  
+        <link rel="stylesheet" type="text/css" href="../../Content/font/weather-icons.css">
+        <link rel="stylesheet" type="text/css" href="../../Content/font/weather-icons-wind.css">
+        @Styles.Render("~/Content/css")    
     </head>
     <body>
         <div>
             @RenderBody()
         </div>
-                
-        @Scripts.Render("~/bundles/bootstrap")
-        @Styles.Render("~/Content/css")
+        <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>        
+        @Scripts.Render("~/bundles/bootstrap")      
         @Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")

@@ -81,3 +81,50 @@ $(document).ready(function () {
         };
     })(), 10000);
 });
+
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Hour', 'mm'],
+      ['13', 0],
+      ['14', 0],
+      ['15', 1],
+      ['16', 2],
+      ['13', 0],
+      ['14', 0],
+      ['15', 1],
+      ['16', 2],
+      ['13', 0],
+      ['14', 0],
+      ['15', 1],
+      ['16', 2]
+    ]);
+
+    var options = {
+        isStacked: true,
+        colors: ['#FFF'],
+        backgroundColor: 'black',
+        legend: {position:'none'},
+        tooltip: {isHtml:'true'},
+        hAxes: [
+            {
+                textStyle: {
+                    color: 'white',
+                    fontSize: '20px'
+                }
+            }
+        ],
+        vAxes: [
+            {
+                textStyle: {
+                    color: 'white',
+                    fontSize: '20px'
+                }
+            }
+        ]
+    };
+
+    var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+}
