@@ -45,6 +45,11 @@ function weatherUpdate(data, status) {
         $(".dayaftertommorow-temp-high").html(weatherReport.Daily[2].TempHigh + "&deg;");
         $(".dayaftertommorow-temp-low").html(weatherReport.Daily[2].TempLow + "&deg;");
         $(".dayaftertommorow-rain-chance").html(weatherReport.Daily[2].RainChance + "&#37;");
+
+
+        drawChart(weatherReport.Hourly);
+
+
     }
 }
 
@@ -82,30 +87,26 @@ $(document).ready(function () {
     })(), 10000);
 });
 
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Hour', 'mm'],
-      ['13', 0],
-      ['14', 0],
-      ['15', 1],
-      ['16', 2],
-      ['13', 0],
-      ['14', 0],
-      ['15', 1],
-      ['16', 2],
-      ['13', 0],
-      ['14', 0],
-      ['15', 1],
-      ['16', 2]
-    ]);
+
+function drawChart(dataArray) {
+    var hourly = [["Hour","mm"]];
+
+
+    for (var i = 0; i < 12 ; i++) {
+        var item = [dataArray[i].Hour.toString(),dataArray[i].RainFall];
+        hourly.push(item);
+    }
+
+
+    var data = google.visualization.arrayToDataTable(hourly);
 
     var options = {
+        chartArea : { left: 20 },
         isStacked: true,
         colors: ['#FFF'],
         backgroundColor: 'black',
-        legend: {position:'none'},
-        tooltip: {isHtml:'true'},
+        legend: { position: 'none' },
+        tooltip: { isHtml: 'true' },
         hAxes: [
             {
                 textStyle: {
@@ -116,13 +117,21 @@ function drawChart() {
         ],
         vAxes: [
             {
+                minValue: 0,
                 textStyle: {
                     color: 'white',
                     fontSize: '20px'
                 }
             }
-        ]
-    };
+        ],
+        vAxis: {
+                minValue: 0,
+                viewWindow: {
+                    min: 0
+                }
+            }
+        }
+        
 
     var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
 
