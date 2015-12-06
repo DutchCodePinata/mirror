@@ -46,7 +46,7 @@ function weatherUpdate(data, status) {
         $(".dayaftertommorow-temp-low").html(weatherReport.Daily[2].TempLow + "&deg;");
         $(".dayaftertommorow-rain-chance").html(weatherReport.Daily[2].RainChance + "&#37;");
 
-        
+
         drawChart(weatherReport.Hourly);
 
 
