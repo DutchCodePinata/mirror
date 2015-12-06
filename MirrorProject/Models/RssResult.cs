@@ -9,8 +9,6 @@ namespace MirrorProject.Models
 {
     public class RssResult
     {
-        private ServiceScheduler scheduler = new ServiceScheduler();
-
         private List<RssFeedItem> rssItems = new List<RssFeedItem>();
 
         public List<RssFeedItem> GetRssItems()
