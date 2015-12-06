@@ -6,7 +6,7 @@
     DateTime date = DateTime.Now;
 }
 
-<div class="col-sm-10">
+<div class="col-sm-12">
     
     <div class="col-sm-12 time medium" style="font-size:150px;">@date.ToString("HH:MM")</div>
     <div class="col-sm-12 date medium">@weekdagen[(int)date.DayOfWeek] @date.Day @maanden[(date.Month - 1)]</div>
