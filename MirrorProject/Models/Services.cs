@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -14,16 +15,24 @@ namespace MirrorProject.Models
     {
         public static async Task WundergroundQuery()
         {
-            using (var client = new HttpClient(new HttpClientHandler(), true))
+            try
             {
-                string apikey = "1859ccf0821879ad";
-                string pws = "IZUIDHOL158";
-                string query = string.Format("http://api.wunderground.com/api/{0}/conditions/forecast/hourly/q/pws:{1}.json", apikey, pws);
+                using (var client = new HttpClient(new HttpClientHandler(), true))
+                {
+                    string apikey = "1859ccf0821879ad";
+                    string backupapikey = "5defeac1eb748efd";
+                    string pws = "IZUIDHOL158";
+                    string query = string.Format("http://api.wunderground.com/api/{0}/conditions/forecast/hourly/q/pws:{1}.json", apikey, pws);
 
-                var json = await client.GetStringAsync(query);
+                    var json = await client.GetStringAsync(query);
 
-                ServiceSingleton.GetInstance().SetWunderground(JsonConvert.DeserializeObject<WundergroundData>(json));
+                    ServiceSingleton.GetInstance().SetWunderground(JsonConvert.DeserializeObject<WundergroundData>(json));
+                }
             }
+            catch (Exception ex)
+            {
+                
+            }           
         }
 
         public static RssResult RssQuery()
