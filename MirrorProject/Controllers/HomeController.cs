@@ -15,8 +15,6 @@ namespace MirrorProject.Controllers
 
         public ActionResult Index()
         {
-            ServiceSingleton.GetInstance();
-            RssSingleton.GetInstance();
             return View();
         }
 
@@ -27,7 +25,7 @@ namespace MirrorProject.Controllers
 
         public ActionResult RssUpdate()
         {
-            return Json(JsonConvert.SerializeObject(RssSingleton.GetInstance().GetRssItems()), JsonRequestBehavior.AllowGet);
+            return Json(JsonConvert.SerializeObject(Services.RssQuery().GetRssItems()), JsonRequestBehavior.AllowGet);
         }
 
     }

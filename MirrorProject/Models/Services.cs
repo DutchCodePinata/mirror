@@ -26,25 +26,26 @@ namespace MirrorProject.Models
             }
         }
 
-        public static async Task RssQuery()
+        public static RssResult RssQuery()
         {
             // Make configuration property
-            string[] feeds = { "http://www.rtlnieuws.nl/service/rss/nieuws/index.xml"};
+            string[] feeds = { "http://www.rtlnieuws.nl/service/rss/nieuws/index.xml", "http://tweakers.net/feeds/nieuws.xml" };
             int numberOfItems = 5;
 
             //Retrieve every item in every feed
             List<RssItem> items = new List<RssItem>();
             foreach (string feed in feeds)
             {
-                RssFeed rssFeed = await RssHelper.ReadFeedAsync(feed);
+                RssFeed rssFeed = RssHelper.ReadFeed(feed);
                 items.AddRange(rssFeed.Items);
             }
 
             //Sort all on publication datetime
             items = items.OrderByDescending(x => x.PublicationUtcTime).Take(numberOfItems).ToList();
-            
 
-            RssSingleton.GetInstance().SetRssItems(items);
+            RssResult result = new RssResult();
+            result.SetRssItems(items);
+            return result;
         }
     }
 }
