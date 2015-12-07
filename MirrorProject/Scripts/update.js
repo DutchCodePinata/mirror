@@ -4,7 +4,7 @@ makeAjaxCalls();
 // Schedule updates
 setInterval(function () {
     makeAjaxCalls();
-}, 1000 * 60);
+}, 60000 * 10);
 
 // Make one call for all services
 function makeAjaxCalls() {
