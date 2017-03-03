@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Timers;
-using System.Web;
 
 namespace MirrorProject.Models
 {
-    public class ServiceScheduler
+    public class SchedulerService
     {
-        public ServiceScheduler()
+        public SchedulerService()
         {
-            Services.WundergroundQuery();
+            DataService.getWunderground();
 
             try
             {
@@ -19,7 +18,7 @@ namespace MirrorProject.Models
                 // Anonymous delegate
                 ElapsedEventHandler handler = new ElapsedEventHandler(delegate(object o, ElapsedEventArgs e)
                 {
-                    Services.WundergroundQuery();
+                    DataService.getWunderground();
                 });
                 tmrTimersTimer.Elapsed += handler;
                 tmrTimersTimer.Start();

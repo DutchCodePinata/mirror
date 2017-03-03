@@ -162,11 +162,51 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ServiceScheduler.cs" />
-    <Compile Include="Models\Services.cs" />
-    <Compile Include="Models\RssResult.cs" />
-    <Compile Include="Models\ServiceSingleton.cs" />
-    <Compile Include="Models\WundergroundModels.cs" />
+    <Compile Include="Models\ViewModels\RssFeedItem.cs" />
+    <Compile Include="Models\Wunderground\Avewind.cs" />
+    <Compile Include="Models\Wunderground\CurrentObservation.cs" />
+    <Compile Include="Models\Wunderground\Date.cs" />
+    <Compile Include="Models\Wunderground\Dewpoint.cs" />
+    <Compile Include="Models\Wunderground\DisplayLocation.cs" />
+    <Compile Include="Models\Wunderground\Estimated.cs" />
+    <Compile Include="Models\Wunderground\FCTTIME.cs" />
+    <Compile Include="Models\Wunderground\Feelslike.cs" />
+    <Compile Include="Models\Wunderground\Forecast.cs" />
+    <Compile Include="Models\Wunderground\Forecastday.cs" />
+    <Compile Include="Models\Wunderground\Forecastday2.cs" />
+    <Compile Include="Models\Wunderground\Heatindex.cs" />
+    <Compile Include="Models\Wunderground\High.cs" />
+    <Compile Include="Models\Wunderground\HourlyForecast.cs" />
+    <Compile Include="Models\Wunderground\Image.cs" />
+    <Compile Include="Models\Wunderground\Low.cs" />
+    <Compile Include="Models\Wunderground\Maxwind.cs" />
+    <Compile Include="Models\Wunderground\Mslp.cs" />
+    <Compile Include="Models\Wunderground\ObservationLocation.cs" />
+    <Compile Include="Models\Wunderground\Qpf.cs" />
+    <Compile Include="Models\Wunderground\QpfAllday.cs" />
+    <Compile Include="Models\Wunderground\QpfDay.cs" />
+    <Compile Include="Models\Wunderground\QpfNight.cs" />
+    <Compile Include="Models\Wunderground\Response.cs" />
+    <Compile Include="Models\ViewModels\WeatherDayForecast.cs" />
+    <Compile Include="Models\ViewModels\WeatherHourForecast.cs" />
+    <Compile Include="Models\ViewModels\WeatherIcon.cs" />
+    <Compile Include="Models\ViewModels\WeatherReport.cs" />
+    <Compile Include="Models\Wunderground\Features.cs" />
+    <Compile Include="Models\Wunderground\Simpleforecast.cs" />
+    <Compile Include="Models\Wunderground\Snow.cs" />
+    <Compile Include="Models\Wunderground\SnowAllday.cs" />
+    <Compile Include="Models\Wunderground\SnowDay.cs" />
+    <Compile Include="Models\Wunderground\SnowNight.cs" />
+    <Compile Include="Models\Wunderground\Temp.cs" />
+    <Compile Include="Models\Wunderground\TxtForecast.cs" />
+    <Compile Include="Models\Wunderground\Wdir.cs" />
+    <Compile Include="Models\Wunderground\Windchill.cs" />
+    <Compile Include="Models\Wunderground\Wspd.cs" />
+    <Compile Include="Models\Wunderground\WundergroundData.cs" />
+    <Compile Include="Services\SchedulerService.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Models\ViewModels\RssResult.cs" />
+    <Compile Include="Services\WeatherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
